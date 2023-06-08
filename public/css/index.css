@@ -1,0 +1,15 @@
+* {
+    font-family: sans-serif;
+}
+
+.posts {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.post {
+    background-color: antiquewhite;
+    width: 16rem;
+    padding: 2rem;
+}
