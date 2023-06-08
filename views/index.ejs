@@ -39,15 +39,26 @@
         <h2>Your feed</h2>
         <div class="posts">
         <% 
-        console.log(posts);
-        console.log(creators[0])
+        // console.log(posts);
+        // console.log(creators[0])
         let data2 = data[0]
-        console.log(data[1])
+        // console.log(data[1])
         //ni yo se que hice aqui, solo dios sabe
         const propiedades = Object.keys(data[0]);
-        console.log(data[1][propiedades[1]].name)
+        // console.log(data[1][propiedades[1]].name)
          for (let i = 0; i < data2.length; i++) { %>
             <div class="post">
+                <div>
+                    <form action="/<%= data[0][i].id_post %>" method="get">
+                        <input type="submit" value="Eliminar">  
+                    </form>
+                </div>
+                <div>
+                    <form action="/<%= data[0][i].id_post %>" method="get">
+                        <input type="submit" value="Editar">  
+                    </form>
+                    
+                </div>
                 <div>
                     <p><b><%= data[0][i].title %></b></p>
                     <p>Mensaje: <%= data[0][i].message %></p>

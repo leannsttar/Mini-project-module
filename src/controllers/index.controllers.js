@@ -40,20 +40,20 @@ export const createPost = async (req, res) => {
     }
 }
 
-// export const deletePost = async (req, res) => {
-//     try {
-//         console.log(req.body.id_post)
-//         const [result] = await pool.query('DELETE FROM posts WHERE id_post = ?', [req.body.id])
+export const deletePost = async (req, res) => {
+    try {
+        console.log(req.params.id)
+        const [result] = await pool.query('DELETE FROM posts WHERE id_post = ?', [req.params.id])
 
-//         if (result.affectedRows <= 0) return res.status(404).json({
-//             message: 'post not found'
-//         })
+        if (result.affectedRows <= 0) return res.status(404).json({
+            message: 'post not found'
+        })
 
-//         res.redirect('/')
-//     } catch (error) {
-//         console.log(error)
-//         return res.status(500).json({
-//             message: 'Something goes wrong'
-//         })
-//     }
-// }
+        res.redirect('/')
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            message: 'Something goes wrong'
+        })
+    }
+}
