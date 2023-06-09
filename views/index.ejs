@@ -48,22 +48,46 @@
         // console.log(data[1][propiedades[1]].name)
          for (let i = 0; i < data2.length; i++) { %>
             <div class="post">
-                <div>
-                    <form action="/<%= data[0][i].id_post %>" method="get">
-                        <input type="submit" value="Eliminar">  
-                    </form>
-                </div>
-                <div>
-                    <form action="/<%= data[0][i].id_post %>" method="get">
-                        <input type="submit" value="Editar">  
-                    </form>
-                    
-                </div>
+                
                 <div>
                     <p><b><%= data[0][i].title %></b></p>
                     <p>Mensaje: <%= data[0][i].message %></p>
                     <p>Language: <%= data[0][i].language %></p>
                     <p>Creador: <%= data[1][propiedades[i]].name %></p>
+                </div>
+                <div class="delete">
+                    <form action="/<%= data[0][i].id_post %>" method="get">
+                        <input type="submit" value="ELIMINAR" class="input-delete">  
+                    </form>
+                </div>
+                <div>
+                    <div class="wrapper">
+                        <a href="#demo-modal<%= i %>">Editar</a>
+                    </div>
+
+                    <div id="demo-modal<%= i %>" class="modal">
+                        <div class="modal__content">
+                            <h2>Editar publicación</h2>
+                            <br>
+                            <form action="/edit/<%= data[0][i].id_post %>" method="post">
+                                <label for="">Titulo</label>
+                                <input type="text" name="title" value="<%= data[0][i].title %>">
+                                <br>
+                                <label for="">Mensaje</label>
+                                <input type="text" name="message" value="<%= data[0][i].message %>">
+                                <br>
+                                <label for="">Idioma</label>
+                                <input type="text" name="language" value="<%= data[0][i].language %>">
+                                <br>
+                                
+                                <input type="submit" value="Editar">  
+                            </form>
+
+                            <a href="#" class="modal__close">&times;</a>
+                        </div>
+                    </div>
+                    
+                    
                 </div>
             </div>
         <%  } %>

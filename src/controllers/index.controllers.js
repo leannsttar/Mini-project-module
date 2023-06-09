@@ -57,3 +57,25 @@ export const deletePost = async (req, res) => {
         })
     }
 }
+
+export const editPost = async (req, res) => {
+    try {
+        const title = req.body.title;
+        const message = req.body.message;
+        const language = req.body.language;
+        console.log(title, message, language)
+        console.log(req.params.id)
+        const [result] = await pool.query('UPDATE posts SET title = ?, message = ?, language = ? WHERE id_post = ?', [title, message, language, req.params.id])
+
+        if (result.affectedRows <= 0) return res.status(404).json({
+            message: 'post not found'
+        })
+
+        res.redirect('/')
+    } catch (error) {
+        console.log(error)
+        return res.status(500).json({
+            message: 'Something goes wrong'
+        })
+    }
+}
